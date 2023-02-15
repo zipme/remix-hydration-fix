@@ -1,6 +1,7 @@
 import { defer, type LoaderArgs } from "@remix-run/node"; // or cloudflare/deno
 import { Await, useLoaderData } from "@remix-run/react";
 import { Suspense } from "react";
+import Test from '../components/Test'
 
 export function meta() {
   return {
@@ -26,6 +27,7 @@ export default function DeferRoute() {
       <h1>Defer Route</h1>
       <p>{data.fastData.message}</p>
       <Suspense fallback={<p>Loading slow data...</p>}>
+        <Test />
         <Await
           resolve={data.slowData}
           errorElement={<p>Error loading slow data!</p>}
